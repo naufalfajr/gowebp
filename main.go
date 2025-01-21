@@ -9,8 +9,8 @@ import (
 
 func main() {
 	// Directory containing PNG files
-	sourceDir := "/mnt/c/Users/ASUS/Downloads/FOTO FOR APPS/example"
-	targetDir := "/mnt/c/Users/ASUS/Downloads/FOTO FOR APPS/prod"
+	sourceDir := "/mnt/c/Users/ASUS/Downloads/FOTO FOR APPS"
+	targetDir := "/mnt/c/Users/ASUS/Downloads/prod"
 
 	// Ensure the output directory exists
 	if err := os.MkdirAll(targetDir, os.ModePerm); err != nil {
@@ -25,7 +25,7 @@ func main() {
 		}
 
 		// Check if the current file is a PNG image
-		if !info.IsDir() && filepath.Ext(path) == ".png" || filepath.Ext(path) == ".jpg" {
+		if !info.IsDir() && (filepath.Ext(path) == ".png" || filepath.Ext(path) == ".jpg") {
 			// Generate the output file path while maintaining the directory structure
 			relPath, err := filepath.Rel(sourceDir, path)
 			if err != nil {
